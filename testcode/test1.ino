@@ -98,18 +98,18 @@ void loop() {
   delayMicroseconds(stop_time);
   
   recent_dust = (0.17 * (dust_value * (5.0 / 1024)) - 0.1) * 1000 * ;    // 미세먼지 값 계산
-  five_dust[49] = recent_dust;   // 새로운 미세먼지 값 입력
-  total_dust = five_dust[49];               // 5개의 미세먼지 값을 저장할 변수
+  five_dust[29] = recent_dust;   // 새로운 미세먼지 값 입력
+  total_dust = five_dust[29];               // 29개의 미세먼지 값을 저장할 변수
   
-  for(int i=0; i<49; i++)
+  for(int i=0; i<29; i++)
   {
     total_dust += five_dust[i];
-    five_dust[i] = five_dust[i+1];  // 0~4번째까지 미세먼지 값 저장을 위해 4번째 배열 비워주기
+    five_dust[i] = five_dust[i+1];  // 0~29번째까지 미세먼지 값 저장을 위해 29번째 배열 비워주기
   }
 
   if(five_dust[0] != 0)
   {
-    dustDensityug = total_dust / 50;
+    dustDensityug = total_dust / 30;
     Serial.print("Dust Density [ug/m^3]: ");            // 시리얼 모니터에 미세먼지 값 출력    
     Serial.println(dustDensityug);
   }                                   
